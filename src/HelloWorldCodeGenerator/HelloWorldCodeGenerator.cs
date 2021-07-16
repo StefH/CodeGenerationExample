@@ -25,12 +25,12 @@ namespace HelloWorldCodeGenerator
         private static void BuildEnum(GeneratorExecutionContext? context)
         {
             var src = new StringBuilder();
-            src.AppendLine("namespace HelloWorld");
+            src.AppendLine("public class HelloWorld");
             src.AppendLine("{");
 
-            src.AppendLine("    public string SayHello()");
+            src.AppendLine("    public void SayHello()");
             src.AppendLine("    {");
-            src.AppendLine($"        return \"Hello mStack\";");
+            src.AppendLine($"        System.Console.WriteLine(\"Hello mStack!\");");
             src.AppendLine("    }");
             src.AppendLine("}");
 
