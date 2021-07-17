@@ -1,0 +1,11 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<# var properties = new string [] {"I1", "I2", "I3"}; #>
+// This is generated
+public class ExampleClass
+{
+<# // This code runs in the text template:
+  foreach (string property in properties) { #>
+    public int <#= property #> { get; set; }
+<# } #>
+}
