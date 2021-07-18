@@ -180,29 +180,30 @@ namespace GeneratedClassBuilders
             var output = new StringBuilder();
 
             output.AppendLine($@"         public override {classSymbol.Name} Build()
-         {{
-             if (Object?.IsValueCreated != true)
-             {{
-                 Object = new Lazy<{classSymbol.Name}>(new {classSymbol.Name}
-                 {{");
+        {{
+            if (Object?.IsValueCreated != true)
+            {{
+                Object = new Lazy<{classSymbol.Name}>(new {classSymbol.Name}
+                {{");
 
             foreach (var property in properties)
+            {
                 output.AppendLine($@"                        {property.Name} = _{CamelCase(property.Name)}.Value,");
+            }
 
             output.AppendLine($@"
-                 }});
-             }}
+                }});
+            }}
 
-             PostBuild(Object.Value);
+            PostBuild(Object.Value);
 
-             return Object.Value;
-         }}
+            return Object.Value;
+        }}
 
-         public static {classSymbol.Name} Default() => new {classSymbol.Name}();");
+        public static {classSymbol.Name} Default() => new {classSymbol.Name}();");
 
             return output.ToString();
         }
-
 
         private static string CamelCase(string value) => $"{value.Substring(0, 1).ToLowerInvariant()}{value.Substring(1)}";
     }

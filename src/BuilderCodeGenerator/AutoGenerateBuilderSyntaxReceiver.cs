@@ -18,7 +18,6 @@ namespace BuilderCodeGenerator
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
         {
             // any field with at least AutoGenerateBuilder attribute is a candidate for property generation
-
             if (syntaxNode is ClassDeclarationSyntax classDeclarationSyntax &&
                  classDeclarationSyntax.AttributeLists.Any(x => x.Attributes.Any(a => a.Name.ToString().Equals("GeneratedClassBuilders.AutoGenerateBuilder"))))
             {
